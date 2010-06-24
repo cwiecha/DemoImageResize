@@ -1,0 +1,99 @@
+<html>
+<head>
+<title>Image Resize Demo using dojo.Stateful APIs</title>
+<!-- dojo reset -->
+<link rel="stylesheet" href="../dojotoolkit/dojo/resources/dojo.css">  
+
+<!-- theme for claro or some other theme -->
+<link rel="stylesheet" href="../dojotoolkit/dijit/themes/claro/claro.css"> 
+
+</head>
+
+<body class="claro">
+
+<!-- ULTIMATELY THERE MAY BE CHROME AROUND THE "demoContainers", SO ISOLATE THE DEMO TO THIS REGION -->
+<div id="demoContainer">
+<!-- DEMO MARKUP SHOULD GO HERE -->
+
+ 	<h1>Resize Image</h1>
+	<div id="main" style="width: 100%; height: 100%" dojoType="dijit.layout.BorderContainer">
+		<div dojoType="dijit.layout.ContentPane" region="top">
+			<p>Quick demo showing the use of dojo.Stateful APIs for derived values in a data model,
+			and binding between model and form dijits in the view.  The goal is to show a simple
+			means to conform to MVC patterns in UI design and also to emulate constraint-based
+			"derived" values in the data model using an image resize dialog.  
+			</p>
+			<p>Try changing either the absolute or relative image sizes and observe the effects on
+			the derived values.  Changes can be made in either direction (absolute->relative or vice versa),
+			and also with the aspect ratio pegged or not.
+			</p>
+			<p>While the demo does not actually implement a constraint-based dependency graph between
+			the values, the dojo.Stateful API along with simple checks to detect and break cycles are
+			sufficient to get pretty close...
+			</p>
+			<p>
+			The dojo.Stateful watch() fn is used both in the model for
+			derived values and to watch changes on both sides of the Model-View split to resync values
+			as they change in either place.  Check out the <a href="layer.js">model and binding src</a> for details...
+			</p>
+		</div>
+		<div dojoType="dijit.layout.ContentPane" region="leading" style="width: 30%" splitter="true">
+			<h3>Image and Resize inputs...</h3>
+	  
+	  			<table>
+	  				<tr>
+	  					<td><label for="initialHeight">Initial Height:</label></td>
+	  					<td><input id="initialHeight" dojoType="dijit.form.NumberTextBox" readonly="true"></input></td>
+	  				</tr>
+	  				<tr>
+	  					<td><label for="initialWidth">Initial Width:</label></td>
+	  					<td><input id="initialWidth" dojoType="dijit.form.NumberTextBox" readonly="true"></input></td>
+	  				</tr>
+	  				<tr>
+	  					<td><label for="preserveRatio">Preserve ratio:</label></td>
+	  					<td><input id="preserveRatio" dojoType="dijit.form.CheckBox"></input></td>
+	  				</tr>
+	  			</table>
+	  			
+ 	  			
+ 	  			<h3>Image Resize controls...</h3>
+      		
+	  			
+	  			<table>
+	  				<tr>
+	  					<td><label for="absoluteHeight">Absolute Height:</label></td>
+	  					<td><input id="absoluteHeight" dojoType="dijit.form.NumberTextBox"></input></td>
+	  				</tr>
+	  				<tr>
+	  					<td><label for="absoluteWidth">Absolute Width:</label></td>
+	  					<td><input id="absoluteWidth" dojoType="dijit.form.NumberTextBox"></input></td>
+	  				</tr>
+	  				<tr>
+	  					<td><label for="relativeHeight">Relative Height:</label></td>
+	  					<td><input id="relativeHeight" dojoType="dijit.form.NumberTextBox"></input></td>
+	  				</tr>
+	  				<tr>
+	  					<td><label for="relativeWidth">Relative Width:</label></td>
+	  					<td><input id="relativeWidth" dojoType="dijit.form.NumberTextBox"></input></td>
+	  				</tr>
+	  			</table>
+	  	</div>
+	  	<div dojoType="dijit.layout.ContentPane" region="center">
+	  			<h3>Resulting image...</h3>
+	  			<img id="theImage" src="images/test.jpg"/>
+	  	</div>
+	</div>
+</div>
+
+<!-- LINK TO DOJO AT THE END OF THE BODY -->
+
+<script type="text/javascript" src="../dojotoolkit/dojo/dojo.js" djConfig="parseOnLoad: true, djConfig: true"></script>
+
+<!--
+DON"T PUT OTHER LINKS ASIDE FROM 'layer.js' IN HERE. ALL OF YOUR REQUIRES SHOULD EXIST
+IN THAT FILE. IT CAN ALSO PULL IN CODE THAT SHOULD RUN onReady
+-->
+<script type="text/javascript" src="layer.js"></script>
+</body>
+</html>
+

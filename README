@@ -1,0 +1,16 @@
+Quick demo showing the use of dojo.Stateful APIs for derived values in a data model,
+and binding between model and form dijits in the view.  The goal is to show a simple
+means to conform to MVC patterns in UI design and also to emulate constraint-based
+"derived" values in the data model using an image resize dialog.  
+
+Try changing either the absolute or relative image sizes and observe the effects on
+the derived values.  Changes can be made in either direction (absolute->relative or vice versa),
+and also with the aspect ratio pegged or not.
+
+While the demo does not actually implement a constraint-based dependency graph between
+the values, the dojo.Stateful API along with simple checks to detect and break cycles are
+sufficient to get pretty close...
+
+The dojo.Stateful watch() fn is used both in the model for
+derived values and to watch changes on both sides of the Model-View split to resync values
+as they change in either place.  Check out layer.js for details...

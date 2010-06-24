@@ -1,0 +1,36 @@
+{
+	name: "DemoImageResize",				
+
+	description: "An example of using dojo.Stateful APIs to construct a simple image resize dialog following an MVC pattern.",
+
+	//info about the author
+	author: {
+		name: "Charlie Wiecha",		
+		email: "cwiecha@gmail.com"
+	},
+
+	//array of keywords related to this demo
+	keywords: ["Stateful", "MVC", "Reactive"],			/* optional */
+
+	//related links to other docs, blogs, tutorials etc
+	//can be local (within this repository) or external links
+	//it should include links to related reference documentation and api's
+	//when possible.
+	relatedLinks: [],				/* optional */
+
+	//the dojo version and possibly other deps in the future
+	dependencies: { 				/* optional */
+		"dojo": {
+			min: "1.5.0"
+		}	
+	},
+
+	platforms: []  // web, desktop, mobile web, mobile app  /* optional */
+	
+	//if you support more than one theme, list them here.  Leaving it empty or null
+	//implies that it will use whatever the demo engine is configured to use.		
+	themes: ["claro"],
+
+	//paths to the screenshots (should be in images/ with the rest of your images
+	screenshots: []					/* optional */ 
+}
