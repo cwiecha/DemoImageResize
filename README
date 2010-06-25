@@ -12,5 +12,8 @@ the values, the dojo.Stateful API along with simple checks to detect and break c
 sufficient to get pretty close...
 
 The dojo.Stateful watch() fn is used both in the model for
-derived values and to watch changes on both sides of the Model-View split to resync values
-as they change in either place.  Check out layer.js for details...
+derived values and to watch changes on the model to resync values in the view.
+Future versions of the demo will extend the use of watch() to listen to property
+changes in the view widgets, once dojo.Stateful is fully supported there, 
+so we'll have a uniform model-model and model-view binding mechanism.  
+Check out layer.js for details...
