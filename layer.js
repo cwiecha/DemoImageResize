@@ -115,14 +115,12 @@ function bindModel2TextField(modelItem, modelProp, controlId){
 		control.set("value", newValue);  
 	});
 	
-	control.watch("value", function( prop, oldValue, newValue){
-		if(newValue != undefined){
-			modelItem.set(modelProp, newValue);  
-		}
+	dojo.connect(control, "onChange", function(e){
+		modelItem.set(modelProp, control.get("value"));  
 	});
 	
 	// set up initial control value...
-	control.attr("value", modelItem.get(modelProp));
+	control.set("value", modelItem.get(modelProp));
 };
 
 function bindModel2Button(modelItem, modelProp, controlId){
@@ -131,12 +129,12 @@ function bindModel2Button(modelItem, modelProp, controlId){
 		
 	modelItem.watch(modelProp, function(prop, oldValue, newValue){
 		if(newValue != control.checked){
-			control.attr("value", newValue);  
+			control.set("value", newValue);  
 		}
 	});
 	
 	dojo.connect(control, "onClick", function(e){
-	modelItem.set("isPreserveRatio", !modelItem.get("isPreserveRatio"));  
+		modelItem.set("isPreserveRatio", !modelItem.get("isPreserveRatio"));  
 	});
 	
 	// set up initial control value...
@@ -144,8 +142,9 @@ function bindModel2Button(modelItem, modelProp, controlId){
 };
 
 function dataBind(){
-	image_init.initialHeight = document.theImage.height;
-	image_init.initialWidth = document.theImage.width;
+	var theImageNode = dojo.byId("theImage");
+	image_init.initialHeight = theImageNode.height;
+	image_init.initialWidth = theImageNode.width;
 	image = imageModel(image_init);
 
 	bindModel2TextField(image, "initialHeight",  "initialHeight");
@@ -159,9 +158,9 @@ function dataBind(){
 
 	
 	image.watch("absoluteHeight", function (prop, oldValue, newValue){
-		document.theImage.height = newValue;
+		theImageNode.height = newValue;
 	});
 	image.watch("absoluteWidth", function (prop, oldValue, newValue){
-		document.theImage.width = newValue;
+		theImageNode.width = newValue;
 	});
 };
